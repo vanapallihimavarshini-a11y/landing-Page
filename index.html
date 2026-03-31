@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickFix Plumbing Services</title>
+
+<style>
+/* --- BASE STYLES & GOOGLE FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseSoft {
+    0% { box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(2, 132, 199, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(2, 132, 199, 0); }
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: white;
+    text-align: center;
+    padding: 140px 20px 160px;
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+    position: relative;
+}
+
+.hero h1 { 
+    font-size: 3.5rem; 
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s ease-out forwards;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: #e0f2fe;
+    animation: fadeUp 1s ease-out forwards;
+}
+
+.hero button {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    background: #ffffff;
+    color: #0284c7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeUp 1.2s ease-out forwards;
+}
+
+.hero button:hover {
+    background: #e0f2fe;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* --- LAYOUT SECTIONS --- */
+section { 
+    padding: 80px 20px; 
+    text-align: center; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    width: 50%;
+    height: 4px;
+    background: #0284c7;
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    color: #64748b;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+/* --- SERVICES CARDS --- */
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.service-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 40px 30px;
+    width: 300px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: #0284c7;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.service-box:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.service-box:hover::before {
+    transform: scaleX(1);
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.service-box h3 {
+    font-size: 1.5rem;
+    color: #0f172a;
+    margin-bottom: 15px;
+}
+
+.service-box p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* --- TESTIMONIALS --- */
+.testimonials-wrapper {
+    background: #f1f5f9;
+    padding: 80px 0;
+    margin-top: 50px;
+}
+
+.testimonials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.testimonial {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 400px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    position: relative;
+    text-align: left;
+}
+
+.testimonial::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 4rem;
+    color: #cbd5e1;
+    font-family: Georgia, serif;
+}
+
+.testimonial p {
+    color: #334155;
+    font-style: italic;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+.author {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #0284c7;
+}
+
+/* --- CONTACT FORM --- */
+.contact-section {
+    background: #ffffff;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+input, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    background: #f8fafc;
+    transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: #0284c7;
+    background: #ffffff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+form button {
+    width: 100%;
+    padding: 15px;
+    background: #0284c7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    animation: pulseSoft 2s infinite;
+}
+
+form button:hover {
+    background: #0369a1;
+    animation: none;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 20px 120px;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+    }
+    .hero h1 { font-size: 2.5rem; }
+    .services, .testimonials {
+        flex-direction: column;
+        align-items: center;
+    }
+    .service-box, .testimonial {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <h1>Reliable Plumbing Solutions</h1>
+    <p>Fast, affordable, and professional service you can trust, right when you need it.</p>
+    <button onclick="document.getElementById('contact').scrollIntoView();">Get a Free Quote</button>
+</div>
+
+<section>
+    <h2 class="section-title">About Us</h2>
+    <p class="section-subtitle">Serving the community with excellence</p>
+    <p style="max-width: 700px; margin: 0 auto; color: #475569; line-height: 1.8;">
+        With over 10 years of hands-on experience, QuickFix is your premier local plumbing company. We pride ourselves on transparent pricing, rapid response times, and leaving your home cleaner than we found it.
+    </p>
+</section>
+
+<section>
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-subtitle">Everything you need to keep the water flowing</p>
+    
+    <div class="services">
+        <div class="service-box">
+            <div class="service-icon">💧</div>
+            <h3>Leak Repair</h3>
+            <p>Advanced detection and rapid patching for all pipe, faucet, and fixture leaks to prevent water damage.</p>
+        </div>
+        <div class="service-box">
+            <div class="service-icon">🌀</div>
+            <h3>Drain Cleaning</h3>
+            <p>Powerful hydro-jetting and snaking services to clear stubborn blockages and guarantee clog-free pipes.</p>
+        </div>
+        <div class="service-box">
+            <div class="service-icon">🔧</div>
+            <h3>Installation</h3>
+            <p>Expert fitting for water heaters, sinks, toilets, and complete piping systems with full warranty coverage.</p>
+        </div>
+    </div>
+</section>
+
+<div class="testimonials-wrapper">
+    <section style="padding: 0;">
+        <h2 class="section-title">Client Stories</h2>
+        <p class="section-subtitle">Don't just take our word for it</p>
+        
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>A pipe burst in our kitchen at 2 AM. QuickFix was at our door in 30 minutes. Absolute lifesavers with an incredibly professional attitude!</p>
+                <div class="author">— Sarah Jenkins</div>
+            </div>
+            <div class="testimonial">
+                <p>Upfront pricing, no hidden fees, and the technician explained everything before starting the work. Highly recommend them for any home repairs.</p>
+                <div class="author">— Mark T.</div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section id="contact" class="contact-section">
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-subtitle">Let us fix the problem today</p>
+    
+    <form>
+        <div class="input-group">
+            <input type="text" placeholder="Full Name" required>
+        </div>
+        <div class="input-group">
+            <input type="email" placeholder="Email Address" required>
+        </div>
+        <div class="input-group">
+            <textarea placeholder="Describe your plumbing issue..." required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+</body>
+</html>
